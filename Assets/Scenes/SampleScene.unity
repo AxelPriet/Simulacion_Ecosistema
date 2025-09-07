@@ -379,9 +379,9 @@ MonoBehaviour:
   consumoCarnivoros: 0.02
   eficienciaCarnivoros: 0.1
   mortalidadCarnivoros: 0.01
-  plantaPrefab: {fileID: 4461773080368417481, guid: 37d32ef1c73659241804d423d785a41a, type: 3}
-  herbivoroPrefab: {fileID: 3019247370389128260, guid: 758f6e360fbc9f645af02fcb26695ffc, type: 3}
-  carnivoroPrefab: {fileID: 5176783783560477038, guid: 30c697461261e654593fa6978af99e49, type: 3}
+  plantaPrefab: {fileID: 7776008490683814867, guid: 37d32ef1c73659241804d423d785a41a, type: 3}
+  herbivoroPrefab: {fileID: 3981131907165657450, guid: 34b7cd18546d4be49a14bf286504a3e7, type: 3}
+  carnivoroPrefab: {fileID: 2925702308112121863, guid: 30c697461261e654593fa6978af99e49, type: 3}
 --- !u!4 &1882088499
 Transform:
   m_ObjectHideFlags: 0
