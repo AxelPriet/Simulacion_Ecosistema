@@ -8,7 +8,7 @@ public class Ecosistema : MonoBehaviour
     public int herbivorosInicial = 40;
     public int carnivorosInicial = 8;
 
-    public float tasaCrecimientoPlantas = 0.3f;
+    public float tasaCrecimiento = 0.3f;
     public float consumoHerbivoros = 0.05f;
     public float eficienciaHerbivoros = 0.02f;
     public float mortalidadHerbivoros = 0.1f;
@@ -55,16 +55,18 @@ public class Ecosistema : MonoBehaviour
     {
         // Fórmulas del ecosistema
         //Formula de crecimiento de las plantas
-        int nuevasPlantas = Mathf.RoundToInt(plantas + tasaCrecimientoPlantas * plantas - consumoHerbivoros * herbivoros);
+        int nuevasPlantas = Mathf.RoundToInt(plantas + tasaCrecimiento * plantas - consumoHerbivoros * herbivoros);
         //Formula de crecimiento de los herviboros
         int nuevosHerbivoros = Mathf.RoundToInt(herbivoros + eficienciaHerbivoros * consumoHerbivoros * herbivoros - mortalidadHerbivoros * herbivoros - consumoCarnivoros * carnivoros);
         //Formula de crecimiento de los Carnivoros
         int nuevosCarnivoros = Mathf.RoundToInt(carnivoros + eficienciaCarnivoros * consumoCarnivoros * carnivoros - mortalidadCarnivoros * carnivoros);
 
+        // Las poblaciones que bajen de 0 se guardaran en 0 para evitar valores irreales
         plantas = Mathf.Max(0, nuevasPlantas);
         herbivoros = Mathf.Max(0, nuevosHerbivoros);
         carnivoros = Mathf.Max(0, nuevosCarnivoros);
 
+        // El $ sirve para interpolar un strin con variables las cuales van entre {}
         Debug.Log($"Plantas: {plantas}, Herbívoros: {herbivoros}, Carnívoros: {carnivoros}");
 
         Draw();
@@ -80,7 +82,7 @@ public class Ecosistema : MonoBehaviour
         herbivorosObjs.Clear();
         carnivorosObjs.Clear();
 
-        // Instanciar plantas
+        // Dibujar plantas en cada iteracion
         for (int i = 0; i < plantas; i++)
         {
             Vector3 pos = new Vector3(Random.Range(-8f, 8f), Random.Range(-4f, 4f), 0);
@@ -88,7 +90,7 @@ public class Ecosistema : MonoBehaviour
             plantasObjs.Add(p);
         }
 
-        // Instanciar herbívoros
+        // Dibujar herbívoros en cada iteracion
         for (int i = 0; i < herbivoros; i++)
         {
             Vector3 pos = new Vector3(Random.Range(-8f, 8f), Random.Range(-4f, 4f), 0);
@@ -96,7 +98,7 @@ public class Ecosistema : MonoBehaviour
             herbivorosObjs.Add(h);
         }
 
-        // Instanciar carnívoros
+        // Instanciar carnívoros en cada iteracion
         for (int i = 0; i < carnivoros; i++)
         {
             Vector3 pos = new Vector3(Random.Range(-8f, 8f), Random.Range(-4f, 4f), 0);
